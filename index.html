@@ -2,994 +2,1033 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mood News Magazine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Mood News Magazine: Real-time, mood-matched news from trusted Indian sources.">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Mayank Sharma | Cosmic Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;500;400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
+    :root {
+      --primary: #0B0E2D;
+      --accent: #2C1C6A;
+      --highlight: #8A2BE2;
+      --highlight-glow: rgba(138, 43, 226, 0.4);
+      --highlight-alt: #FF6AC2;
+      --bg: #05071F;
+      --card-bg: rgba(17, 17, 52, 0.7);
+      --text: #E1E6FF;
+      --muted: #8A8DB5;
+      --shadow: 0 4px 24px rgba(138, 43, 226, 0.15);
+      --radius: 1.5rem;
+      --transition: 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-  background: linear-gradient(120deg,#f7f8fa 0%,#e0e1e6 100%);
-  background-size: 200% 200%;
-  animation: gradientMove 8s ease-in-out infinite alternate;
-}
-@keyframes gradientMove {
-  0% { background-position: 0 0; }
-  100% { background-position: 100% 100%; }
-}
-    body { background: #f7f8fa; font-family: 'Segoe UI', Arial, sans-serif; }
-    .valenti-header { background: #23272f; color: #fff; padding: 2rem 0 1rem 0; text-align: center; }
-    .mood-selector { margin: 1.5rem auto 1rem auto; text-align: center; }
-    .mood-btn { font-size: 2rem; margin: 0 0.5rem; border: none; background: none; cursor: pointer; transition: transform 0.15s; }
-    .mood-btn.selected, .mood-btn:hover { transform: scale(1.2); }
-    .news-section { margin: 2rem auto; max-width: 1200px; }
-    .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-    .news-card {
+      margin: 0;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23150E42' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23250B54'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+      color: var(--text);
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at top right, rgba(138, 43, 226, 0.15), transparent 70%),
+                  radial-gradient(ellipse at bottom left, rgba(255, 106, 194, 0.15), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* Stars Animation */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+    
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+    }
+    
+    .star:nth-child(1) { width: 2px; height: 2px; top: 10%; left: 20%; animation: twinkle 4s infinite 0.5s; }
+    .star:nth-child(2) { width: 3px; height: 3px; top: 30%; left: 85%; animation: twinkle 5s infinite 1s; }
+    .star:nth-child(3) { width: 1px; height: 1px; top: 65%; left: 40%; animation: twinkle 3s infinite 0.2s; }
+    .star:nth-child(4) { width: 2px; height: 2px; top: 15%; left: 70%; animation: twinkle 6s infinite 2s; }
+    .star:nth-child(5) { width: 2px; height: 2px; top: 45%; left: 15%; animation: twinkle 4s infinite 1.5s; }
+    .star:nth-child(6) { width: 1px; height: 1px; top: 55%; left: 90%; animation: twinkle 5s infinite 0.7s; }
+    .star:nth-child(7) { width: 3px; height: 3px; top: 25%; left: 45%; animation: twinkle 7s infinite 0.3s; }
+    .star:nth-child(8) { width: 2px; height: 2px; top: 75%; left: 25%; animation: twinkle 4s infinite 1.2s; }
+    .star:nth-child(9) { width: 1px; height: 1px; top: 85%; left: 75%; animation: twinkle 3s infinite 0.9s; }
+    .star:nth-child(10) { width: 2px; height: 2px; top: 5%; left: 55%; animation: twinkle 6s infinite 0.1s; }
+    .star:nth-child(11) { width: 3px; height: 3px; top: 35%; left: 5%; animation: twinkle 5s infinite 1.7s; }
+    .star:nth-child(12) { width: 1px; height: 1px; top: 50%; left: 60%; animation: twinkle 4s infinite 0.4s; }
+    .star:nth-child(13) { width: 2px; height: 2px; top: 70%; left: 35%; animation: twinkle 7s infinite 1.9s; }
+    .star:nth-child(14) { width: 3px; height: 3px; top: 90%; left: 10%; animation: twinkle 6s infinite 0.6s; }
+    .star:nth-child(15) { width: 1px; height: 1px; top: 20%; left: 80%; animation: twinkle 5s infinite 1.3s; }
+
+    /* Shooting Star Animation */
+    @keyframes shootingStar {
+      0% {
+        transform: translateX(0) translateY(0) rotate(215deg);
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-500px) translateY(500px) rotate(215deg);
+        opacity: 0;
+      }
+    }
+
+    .shooting-star {
+      position: fixed;
+      top: 10%;
+      right: 10%;
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,1) 100%);
+      opacity: 0;
+      transform-origin: right;
+      z-index: -1;
+      animation: shootingStar 6s linear infinite 3s;
+      box-shadow: 0 0 5px #fff;
+      border-radius: 100px;
+    }
+
+    .shooting-star:before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
       background: #fff;
-      border-radius: 1.2em;
-      box-shadow: 0 8px 32px rgba(34,34,59,0.10);
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+    }
+
+    .shooting-star:nth-child(2) {
+      top: 30%;
+      right: 40%;
+      animation-delay: 8s;
+    }
+
+    /* Sticky Transparent Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 14, 45, 0.7);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2);
+      padding: 1.2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s;
+    }
+    header.scrolled {
+      background: rgba(11, 14, 45, 0.95);
+      box-shadow: 0 4px 16px rgba(138, 43, 226, 0.3);
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      position: relative;
+      transition: color var(--transition);
       overflow: hidden;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--highlight);
+      box-shadow: 0 0 8px var(--highlight-glow);
+      transition: width var(--transition), left var(--transition);
+      position: absolute;
+      left: 50%; bottom: -4px;
+      transform: translateX(-50%);
+    }
+    nav a:hover, nav a:focus {
+      color: var(--highlight);
+      text-shadow: 0 0 8px var(--highlight-glow);
+    }
+    nav a:hover::after, nav a:focus::after {
+      width: 100%;
+      left: 0;
+      transform: none;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 70vh;
       display: flex;
       flex-direction: column;
-      transition: box-shadow 0.2s, transform 0.2s;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      border: 1px solid rgba(138, 43, 226, 0.3);
+      color: #fff;
+      border-radius: 0;
+      box-shadow: 0 0 40px rgba(138, 43, 226, 0.3);
+      padding: 5rem 5% 4rem 5%;
+      margin: 2rem 0 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E"),
+                linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      opacity: 0.8;
+      z-index: -1;
+    }
+    
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+      opacity: 0.5;
+      z-index: -1;
+      animation: pulse 15s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+    
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
       opacity: 0;
-      transform: translateY(40px) scale(0.98);
-      animation: fadeInUp 0.7s forwards;
+      transform: translateY(40px);
+      animation: fadeInUp 1s 0.2s forwards;
+      background: linear-gradient(to right, #E1E6FF, #FF6AC2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
     }
-    .news-card:hover {
-      box-shadow: 0 24px 64px rgba(76,97,255,0.22);
-      transform: scale(1.04) translateY(-8px) rotate(-1deg);
-      transition: box-shadow 0.3s, transform 0.3s;
+    .hero p {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 0;
+      max-width: 700px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s 0.5s forwards;
     }
+    .hero .cta-btn {
+      margin-top: 1.5rem;
+      background: var(--highlight);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.9rem 2.2rem;
+      cursor: pointer;
+      box-shadow: 0 0 15px var(--highlight-glow);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s 0.8s forwards;
+    }
+    .cta-btn:after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 0; height: 0;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+      z-index: 0;
+    }
+    .cta-btn:active:after {
+      width: 200px;
+      height: 200px;
+      transition: 0s;
+    }
+    .cta-btn:hover, .cta-btn:focus {
+      background: var(--highlight-alt);
+      transform: scale(1.06);
+      box-shadow: 0 0 25px rgba(255, 106, 194, 0.6);
+    }
+    
+    /* Appear Animation */
     @keyframes fadeInUp {
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: none;
       }
     }
-    .news-img { width: 100%; height: 180px; object-fit: cover; background: #e0e1e6; }
-    .news-content { padding: 1.2em; flex: 1; display: flex; flex-direction: column; }
-    .news-title { font-size: 1.1em; font-weight: 700; color: #23272f; margin-bottom: 0.5em; }
-    .news-summary { color: #444; font-size: 1em; margin-bottom: 0.7em; flex: 1; }
-    .news-meta { font-size: 0.97em; color: #888; margin-bottom: 0.2em; }
-    .news-source { color: #6c63ff; font-weight: 600; }
-    .badge-mood {
-      font-size: 1em;
-      border-radius: 12px;
-      padding: 0.2em 0.8em;
-      margin-right: 0.5em;
+    
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Section separation, whitespace, card shadows */
+    main {
+      max-width: 100%; /* Changed from 1100px */
+      margin: 0;
+      padding: 0 5%; /* Changed from fixed padding to percentage-based */
+    }
+    
+    section {
+      margin-bottom: 3rem;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 2.5rem 0 1.5rem 0;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 10px var(--highlight-glow);
+      background: linear-gradient(to right, var(--text), var(--highlight));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       display: inline-block;
+      padding-left: 1%; /* Fix alignment with content */
+    }
+    .gallery, .additional-projects, .metrics, .awards, .team, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      padding: 0 1%; /* Add some padding */
+    }
+    .card, .additional-card, .metric-card, .award-card, .team-card, .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.15);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
       opacity: 0;
-      animation: badgePop 0.7s 0.2s forwards;
-      transform: scale(0.7);
+      transform: translateY(40px);
+      will-change: transform, opacity;
+      backdrop-filter: blur(5px);
     }
-    @keyframes badgePop {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+    .card.in-view, .additional-card.in-view, .metric-card.in-view, .award-card.in-view, .team-card.in-view, .testimonial-card.in-view {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
     }
-    .badge-happy { background: #ffe066; color: #23272f; }
-    .badge-sad { background: #b2bec3; color: #2d3436; }
-    .badge-angry { background: #ff7675; color: #fff; }
-    .badge-surprised { background: #74b9ff; color: #fff; }
-    .badge-neutral { background: #dfe6e9; color: #636e72; }
-    .update-indicator { background: #ffe066; color: #23272f; font-weight: 600; padding: 0.5em 1em; border-radius: 1em; display: none; margin: 0 auto 1em auto; text-align: center; }
-    .infinite-scroll-loader { text-align: center; color: #888; margin: 2em 0; }
-    @media (max-width: 600px) {
-      .hero-title { font-size: 1.5rem; }
-      .news-title { font-size: 1em; }
-      .news-content { padding: 0.7em; }
-      .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
+    .card:hover, .card:focus-within,
+    .additional-card:hover, .additional-card:focus-within,
+    .team-card:hover, .team-card:focus-within,
+    .testimonial-card:hover, .testimonial-card:focus-within {
+      transform: translateY(-8px) scale(1.025);
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+      border-color: rgba(138, 43, 226, 0.4);
     }
-    #fab-bookmarks {
-      position: fixed;
-      bottom: 80px;
-      right: 24px;
-      z-index: 1050;
-      background: #6c63ff;
+    
+    .card-title, .additional-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--highlight);
+      margin: 0 0 0.2rem 0;
+      letter-spacing: -0.01em;
+      text-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+    }
+    
+    .card-desc, .additional-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      flex: 1;
+    }
+    
+    /* Add button container for side-by-side buttons */
+    .button-container {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 0.2rem;
+    }
+    
+    /* Adjust existing button styles for the new layout */
+    .card-btn, .additional-btn, .view-site-btn {
+      background: var(--highlight);
       color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    /* Style for View Site button */
+    .view-site-btn {
+      background: transparent;
+      border: 2px solid var(--highlight);
+      color: var(--highlight);
+    }
+
+    .view-site-btn:hover, .view-site-btn:focus {
+      background: rgba(138, 43, 226, 0.15);
+      border-color: var(--highlight-alt);
+      color: var(--highlight-alt);
+      transform: scale(1.06);
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+    }
+    
+    .card-btn, .additional-btn {
+      align-self: flex-start;
+      background: var(--highlight);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      margin-top: 0.2rem;
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .card-btn:after, .additional-btn:after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 0; height: 0;
+      background: rgba(255,255,255,0.2);
       border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      box-shadow: 0 4px 16px rgba(76,97,255,0.18);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+      z-index: -1;
+    }
+    
+    .card-btn:active:after, .additional-btn:active:after {
+      width: 200px;
+      height: 200px;
+      transition: 0s;
+    }
+    
+    .card-btn:hover, .card-btn:focus,
+    .additional-btn:hover, .additional-btn:focus {
+      background: var(--highlight-alt);
+      transform: scale(1.06);
+      box-shadow: 0 0 15px rgba(255, 106, 194, 0.4);
+    }
+    
+    /* Metrics & Awards */
+    .metrics {
+      margin-bottom: 2rem;
+    }
+    .metric-card {
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+    }
+    .metric-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--highlight);
+      margin-bottom: 0.2rem;
+      transition: color 0.3s;
+      text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    }
+    .metric-label {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+    .awards {
+      margin-bottom: 2rem;
+    }
+    .award-card {
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+    }
+    .award-icon {
+      font-size: 2.2rem;
+      color: var(--highlight);
+      margin-bottom: 0.3rem;
+      opacity: 0.9;
+      text-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+    }
+    .award-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .award-desc {
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+    
+    /* Team/Testimonials */
+    .team-card, .testimonial-card {
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+    }
+    .team-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+      border: 2px solid var(--highlight);
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    }
+    .team-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .team-role {
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+    .testimonial-quote {
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-author {
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: var(--card-bg);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.15);
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(5px);
+    }
+    .contact-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--highlight);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+    }
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .contact-list li {
+      font-size: 1.07rem;
+      color: var(--text);
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      border: none;
-      transition: background 0.2s;
+      gap: 0.7rem;
     }
-    #fab-bookmarks:hover { background: #4834d4; }
-    @media (min-width: 768px) {
-      #fab-bookmarks { display: none; }
+    .contact-list a {
+      color: var(--highlight);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition), text-shadow var(--transition);
     }
-    .nav-tabs .nav-link.active {
-      background: #6c63ff;
-      color: #fff !important;
-      font-weight: bold;
-      border-radius: 0.5em 0.5em 0 0;
-      box-shadow: 0 2px 8px rgba(76,97,255,0.08);
+    .contact-list a:hover, .contact-list a:focus {
+      color: var(--highlight-alt);
+      text-decoration: underline;
+      text-shadow: 0 0 8px rgba(255, 106, 194, 0.4);
     }
-    .nav-tabs .nav-link {
-      color: #23272f;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
+    
+    /* Footer */
+    footer {
+      background: rgba(17, 17, 52, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 0; /* Remove rounded corners */
+      border-top: 1px solid rgba(138, 43, 226, 0.2);
+      box-shadow: 0 -2px 8px rgba(138, 43, 226, 0.15);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 3rem;
+      width: 100%; /* Make footer full width */
     }
-    .nav-tabs .nav-link:hover:not(.active) {
-      background: #f0f0fa;
-      color: #6c63ff;
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 0.5rem;
     }
-    #trendingContent .badge.bg-primary {
-      transition: box-shadow 0.2s, background 0.2s;
-    }
-    #trendingContent .badge.bg-primary:hover {
-      background: #4834d4;
-      box-shadow: 0 0 8px #6c63ff;
-    }
-    body.dark-mode {
-      background: #181a1b !important;
-      color: #eaeaea !important;
-    }
-    body.dark-mode .valenti-header,
-    body.dark-mode .card,
-    body.dark-mode .news-card {
-      background: #23272f !important;
-      color: #eaeaea !important;
-    }
-    body.dark-mode .news-title { color: #fff; }
-    body.dark-mode .news-source { color: #ffe066; }
-    body.dark-mode .nav-tabs .nav-link.active { background: #23272f; color: #ffe066 !important; }
-    body.dark-mode .nav-tabs .nav-link { color: #ffe066; }
-    .hero-title {
-      font-size: 2.5rem;
-      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      overflow: hidden;
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color var(--transition), text-shadow var(--transition);
       position: relative;
     }
-    .hero-anim {
-      display: inline-block;
-      animation: heroFadeIn 1.2s cubic-bezier(.4,2,.6,1);
-      background: linear-gradient(90deg,#ffe066 0%,#6c63ff 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .footer-links a:hover, .footer-links a:focus {
+      color: var(--highlight);
+      text-shadow: 0 0 8px rgba(138, 43, 226, 0.4);
     }
-    @keyframes heroFadeIn {
-      0% { opacity: 0; transform: translateY(40px) scale(0.95);}
-      100% { opacity: 1; transform: translateY(0) scale(1);}
+    .footer-social {
+      display: flex;
+      gap: 1.2rem;
     }
-    .skeleton-loader { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-    .skeleton-card {
-      height: 280px;
-      border-radius: 1.2em;
-      background: linear-gradient(90deg,#f7f8fa 25%,#e0e1e6 50%,#f7f8fa 75%);
-      background-size: 200% 100%;
-      animation: skeletonMove 1.2s infinite linear;
+    .footer-social a {
+      color: var(--muted);
+      font-size: 1.5rem;
+      transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
     }
-    @keyframes skeletonMove {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+    .footer-social a:hover, .footer-social a:focus {
+      color: var(--highlight);
+      transform: scale(1.2);
+      text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
     }
-    .btn:active, .mood-btn:active {
-  transform: scale(0.93);
-  transition: transform 0.1s;
-}
-.badge-mood {
-  cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.badge-mood:hover {
-  box-shadow: 0 0 12px #ffe066;
-  transform: scale(1.1) rotate(-3deg);
-}
-.scroll-anim {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s, transform 0.7s;
-}
-.scroll-anim.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-#newsSectionTabs {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #f7f8fa;
-}
-.kinetic-text {
-  display: inline-block;
-  animation: kinetic 2s infinite alternate;
-}
-@keyframes kinetic {
-  0% { letter-spacing: 0.01em; }
-  100% { letter-spacing: 0.2em; color: #6c63ff; }
-}
+    .footer-copy {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 700px) {
+      .hero {
+        padding: 2rem 1rem 1.5rem 1rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .gallery, .additional-projects, .metrics, .awards, .team, .testimonials {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      footer {
+        padding: 1.2rem 0.7rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+      }
+      .hero h1 {
+        font-size: 1.3rem;
+      }
+    }
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <a href="#newsGrid" class="visually-hidden-focusable" style="position:absolute;top:0;left:0;background:#ffe066;color:#23272f;padding:8px;z-index:2000;">Skip to main content</a>
-  <header class="valenti-header">
-    <h1 class="hero-title">
-      <span class="hero-anim">Mood News Magazine</span>
-    </h1>
-    <div style="font-size:1.2em;">Real-time, mood-matched news from trusted Indian sources</div>
+  <!-- Stars background -->
+  <div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+  
+  <!-- Shooting stars -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  
+  <header id="main-header">
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#awards">Awards</a>
+      <a href="#team">Team</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
-  <div class="mood-selector">
-    <span style="font-size:1.1em;margin-right:1em;">How are you feeling?</span>
-    <button class="mood-btn" data-mood="happy" title="Happy" aria-label="Happy mood">😊</button>
-    <button class="mood-btn" data-mood="sad" title="Sad">😢</button>
-    <button class="mood-btn" data-mood="angry" title="Angry">😡</button>
-    <button class="mood-btn" data-mood="surprised" title="Surprised">😲</button>
-    <button class="mood-btn" data-mood="neutral" title="Neutral">😐</button>
-  </div>
-  <!-- Add this after your mood selector and before weather/stocks widgets -->
-  <div class="container mb-3" style="max-width:1200px;">
-    <ul class="nav nav-tabs" id="newsSectionTabs" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="tab-top" data-section="top" type="button" role="tab">Top News</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-tech" data-section="tech" type="button" role="tab">Tech</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-sports" data-section="sports" type="button" role="tab">Sports</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-business" data-section="business" type="button" role="tab">Business</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-entertainment" data-section="entertainment" type="button" role="tab">Entertainment</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-science" data-section="science" type="button" role="tab">Science</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-health" data-section="health" type="button" role="tab">Health</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-lifestyle" data-section="lifestyle" type="button" role="tab">Lifestyle</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-education" data-section="education" type="button" role="tab">Education</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-national" data-section="national" type="button" role="tab">National</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-international" data-section="international" type="button" role="tab">International</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="tab-local" data-section="local" type="button" role="tab">Local</button>
-      </li>
-    </ul>
-  </div>
-  <div id="updateIndicator" class="update-indicator">New stories available! <button onclick="reloadNews()" class="btn btn-sm btn-warning ms-2">Refresh</button></div>
-  <!-- Move watermark (credit) to upper right corner and style it -->
-  <div id="credit" style="
-    position: fixed;
-    top: 18px;
-    right: 24px;
-    z-index: 3000;
-    text-align: right;
-    margin-top: 0;
-    pointer-events: none;
-  ">
-    <span style="
-      display: inline-block;
-      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-      font-weight: 700;
-      font-size: 1.1em;
-      letter-spacing: 0.03em;
-      color: #6c63ff;
-      background: linear-gradient(90deg,#ffe066 0%,#6c63ff 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInCredit 2s cubic-bezier(.4,2,.6,1);
-      box-shadow: none;
-      pointer-events: auto;
-    ">
-      Built by Mayank Sharma TESTSTST
-    </span>
-  </div>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-    @keyframes fadeInCredit {
-      0% { opacity: 0; transform: translateY(30px) scale(0.95);}
-      100% { opacity: 1; transform: translateY(0) scale(1);}
-    }
-    #credit { user-select: none; }
-  </style>
-  <!-- Weather Widget: Show realtime weather based on user's location -->
-  <div id="weatherWidget" class="container mb-3" style="max-width:600px;">
-    <div class="card shadow-sm" style="border-radius:1em;">
-      <div class="card-body d-flex align-items-center" id="weatherContent">
-        <span>Loading weather...</span>
-      </div>
-    </div>
-  </div>
-  <script>
-    // Weather: Get user's location and fetch weather from public free API (wttr.in)
-    function showWeather(city, temp, desc, iconUrl) {
-      document.getElementById('weatherContent').innerHTML = `
-        <img src="${iconUrl}" alt="${desc}" style="width:48px;height:48px;margin-right:12px;">
-        <div>
-          <div style="font-weight:700;font-size:1.1em;">${city}</div>
-          <div>${desc}, <b>${temp}&deg;C</b></div>
-        </div>
-      `;
-    }
-    function fetchWeather(city) {
-      // Using wttr.in public API (no key required)
-      fetch(`https://wttr.in/${encodeURIComponent(city)}?format=j1`)
-        .then(res => res.json())
-        .then(data => {
-          const area = data.nearest_area?.[0]?.areaName?.[0]?.value || city;
-          const temp = data.current_condition?.[0]?.temp_C || "--";
-          const desc = data.current_condition?.[0]?.weatherDesc?.[0]?.value || "N/A";
-          const iconUrl = data.current_condition?.[0]?.weatherIconUrl?.[0]?.value || "https://wttr.in/files/0.png";
-          showWeather(area, temp, desc, iconUrl);
-        })
-        .catch(() => {
-          document.getElementById('weatherContent').innerHTML = '<span class="text-danger">Weather unavailable</span>';
-        });
-    }
-    // Try geolocation first, fallback to Delhi
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        pos => {
-          fetch(`https://wttr.in/${pos.coords.latitude},${pos.coords.longitude}?format=j1`)
-            .then(res => res.json())
-            .then(data => {
-              const area = data.nearest_area?.[0]?.areaName?.[0]?.value || "Your Location";
-              const temp = data.current_condition?.[0]?.temp_C || "--";
-              const desc = data.current_condition?.[0]?.weatherDesc?.[0]?.value || "N/A";
-              const iconUrl = data.current_condition?.[0]?.weatherIconUrl?.[0]?.value || "https://wttr.in/files/0.png";
-              showWeather(area, temp, desc, iconUrl);
-            })
-            .catch(() => fetchWeather('Delhi'));
-        },
-        () => fetchWeather('Delhi'),
-        { timeout: 5000 }
-      );
-    } else {
-      fetchWeather('Delhi');
-    }
-  </script>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <h1>Mayank Sharma</h1>
+      <p>
+        <strong>Student at IIT JODHPUR, Pursuing BS in AIDE.</strong><br>
+        I am quite fascinated by the number of AI tools in the market and their application.<br>
+        <span style="color: #FF6AC2; font-weight:600; text-shadow: 0 0 8px rgba(255, 106, 194, 0.4);">Find some of them here.</span>
+      </p>
+      <button class="cta-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
+    </section>
 
-  <!-- Stocks Widget: Redirect to BSE website on click, always show redirect text -->
-  <div id="stocksWidget" class="container mb-3" style="max-width:600px; cursor:pointer;" onclick="window.open('https://www.bseindia.com/', '_blank')">
-    <div class="card shadow-sm stock-card-anim" style="border-radius:1em; transition: box-shadow 0.3s, transform 0.3s;">
-      <div class="card-body" id="stocksContent" style="color:#23272f; font-size:1.15em; font-weight:600; text-align:center;">
-        <span class="bse-redirect-text">
-          Click here to view live stocks on <span style="color:#6c63ff; font-weight:700;">BSE India</span> &rarr;
-        </span>
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="card"> <!-- Use .card for appear/hover effect -->
+        <p>
+          I am passionate about AI, data science, and building tools that make a difference. My journey at IIT Jodhpur has exposed me to cutting-edge research and real-world projects. I love collaborating and sharing knowledge!
+        </p>
       </div>
-    </div>
-  </div>
-  <style>
-    .stock-card-anim:hover {
-      box-shadow: 0 8px 32px rgba(76,97,255,0.18);
-      transform: scale(1.04) translateY(-4px) rotate(-1deg);
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-    .bse-redirect-text {
-      animation: bsePulse 1.5s infinite alternate;
-      letter-spacing: 0.03em;
-    }
-    @keyframes bsePulse {
-      0% { color: #23272f; }
-      100% { color: #6c63ff; text-shadow: 0 0 8px #ffe066; }
-    }
-  </style>
-  <div id="trendingWidget" class="container mb-3" style="max-width:600px;">
-    <div class="card shadow-sm" style="border-radius:1em;">
-      <div class="card-body" id="trendingContent">
-        <span>Loading trending topics...</span>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="metrics">
+      <h2 class="section-title">Metrics</h2>
+      <div class="metrics">
+        <div class="metric-card">
+          <div class="metric-number" data-count="16">0</div>
+          <div class="metric-label">Major Projects</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number" data-count="8">0</div>
+          <div class="metric-label">Awards</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number" data-count="5">0</div>
+          <div class="metric-label">Team Members</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number" data-count="100">0</div>
+          <div class="metric-label">Happy Users</div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="container mb-3" style="max-width:600px;">
-    <form id="searchForm" class="d-flex">
-      <input id="searchInput" class="form-control me-2" type="search" placeholder="Search news..." aria-label="Search">
-      <button class="btn btn-outline-primary" type="submit">Search</button>
-    </form>
-  </div>
-  <div class="container mb-3" style="max-width:600px;">
-    <button class="btn btn-outline-secondary" id="viewBookmarksBtn" aria-label="View Bookmarks" data-bs-toggle="modal" data-bs-target="#bookmarksModal">🔖 View Bookmarks</button>
-  </div>
-  <select id="sectionDropdown" class="form-select mb-3 d-md-none">
-    <option value="top">Top News</option>
-    <option value="tech">Tech</option>
-    <option value="sports">Sports</option>
-    <option value="business">Business</option>
-    <option value="entertainment">Entertainment</option>
-    <option value="science">Science</option>
-    <option value="health">Health</option>
-    <option value="lifestyle">Lifestyle</option>
-    <option value="education">Education</option>
-    <option value="national">National</option>
-    <option value="international">International</option>
-    <option value="local">Local</option>
-  </select>
-  <div class="text-end mb-3" style="max-width:1200px;margin:auto;">
-    <button id="refreshNewsBtn" class="btn btn-outline-primary refresh-anim-btn" aria-label="Refresh News">
-      <span id="refreshIcon" class="refresh-icon">&#x21bb;</span> Refresh News
-    </button>
-  </div>
-  <main class="news-section">
-    <div id="newsGrid" class="news-grid"></div>
-    <div id="scrollLoader" class="infinite-scroll-loader" style="display:none;">Loading more news...</div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards">
+      <h2 class="section-title">Awards</h2>
+      <div class="awards">
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-trophy"></i></div>
+          <div class="award-title">Hackathon Winner</div>
+          <div class="award-desc">Won IITJ AI Hackathon 2024</div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon"><i class="fas fa-medal"></i></div>
+          <div class="award-title">Dean's List</div>
+          <div class="award-desc">Academic Excellence 2023</div>
+        </div>
+        <!-- Add more awards as needed -->
+      </div>
+    </section>
+
+    <!-- Projects Section with updated links -->
+    <h2 class="section-title" id="projects">Project Gallery</h2>
+    <section class="gallery">
+      <div class="card">
+        <div class="card-title">Face Mask Detection with Deep Learning</div>
+        <div class="card-desc">Detects face masks in images/streams using MobileNetV2, classifies mask status with high accuracy.</div>
+        <a class="card-btn" href="https://msfacify.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Customer Churn Prediction</div>
+        <div class="card-desc">ML pipeline for telecom churn prediction using Random Forest and XGBoost, features actionable insights.</div>
+        <a class="card-btn" href="https://xlhyimcjxn0d.manus.space/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Music Genre Classification</div>
+        <div class="card-desc">Audio model using CNNs/LSTMs to identify genres; web app for user testing.</div>
+        <a class="card-btn" href="https://genre-classifyer.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">E-Commerce Product Recommendation System</div>
+        <div class="card-desc">Hybrid engine (collaborative + content-based) boosting engagement by 20%.</div>
+        <a class="card-btn" href="https://app--clay-shop-1f50815c.base44.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Sentiment Analysis on Social Media</div>
+        <div class="card-desc">Uses BERT to classify tweet sentiments, offers real-time trend visualization.</div>
+        <a class="card-btn" href="https://ss-analysis-ms.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Spam Mail Analyzer</div>
+        <div class="card-desc">Detects & filters unwanted/harmful emails, enhances inbox security.</div>
+        <a class="card-btn" href="https://app--cosmic-guard-30c712d6.base44.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">SmartCity IoT (PC only)</div>
+        <div class="card-desc">Integrates IoT into urban systems for real-time city data and smarter management.</div>
+        <a class="card-btn" href="https://splendid-pika-249aa2.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">Life Goal Unleashed (Life Pattern Analyzer)</div>
+        <div class="card-desc">Analyzes user routines for personal growth and productivity.</div>
+        <a class="card-btn" href="https://lifexly.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">SocialStarX</div>
+        <div class="card-desc">Automated tool for post scheduling, engagement analysis, account management.</div>
+        <a class="card-btn" href="https://dynamic-flan-4984b0.netlify.app/#l" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">ReactNative</div>
+        <div class="card-desc">Showcases apps built with React Native for cross-platform development.</div>
+        <a class="card-btn" href="https://reactnativeproject.lovable.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">X Analytics</div>
+        <div class="card-desc">Market analysis tool offering deep market and consumer insights.</div>
+        <a class="card-btn" href="https://market-analytics.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">CredWise</div>
+        <div class="card-desc">Credit card approval predictor for personalized recommendations.</div>
+        <a class="card-btn" href="https://cardx.lovable.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">FintechAnalytics</div>
+        <div class="card-desc">EDA tool transforming raw financial data into insights with visual/statistical techniques.</div>
+        <a class="card-btn" href="https://fintechanalytics.vercel.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">SalesAnalytics</div>
+        <div class="card-desc">Analyzes sales trends and processes for data-driven business growth.</div>
+        <a class="card-btn" href="https://stately-starship-297297.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+      <div class="card">
+        <div class="card-title">msGPT</div>
+        <div class="card-desc">Advanced AI assistant for content, Q&A, and productivity tasks.</div>
+        <a class="card-btn" href="https://gptbymayank.lovable.app/" target="_blank" rel="noopener">Explore</a>
+      </div>
+    </section>
+
+    <!-- Additional Projects Section with updated links -->
+    <h2 class="section-title" id="additional">Additional Projects</h2>
+    <section class="additional-projects">
+      <div class="additional-card">
+        <div class="additional-title">Game System Compatibility Checker (GSCC)</div>
+        <div class="additional-desc">Tool for gamers to check if their system can handle the latest titles by entering specifications; provides instant feedback.</div>
+        <a class="additional-btn" href="https://iridescent-rolypoly-782dae.netlify.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">Tracker Site</div>
+        <div class="additional-desc">Workforce, income, and capital management solution with attendance, salary, provident fund, and performance tracking, designed to streamline HR and payroll processing.</div>
+        <a class="additional-btn" href="https://wmsms.vercel.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">Moody News</div>
+        <div class="additional-desc">Personalized news headlines curated according to your mood, delivering stories that resonate with your feelings.</div>
+        <a class="additional-btn" href="https://wmsms.vercel.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">Named Entity Linking (NEL)</div>
+        <div class="additional-desc">Identifies and links people, organizations, and places in text to database entries, improving data search and organization for richer insights.</div>
+        <a class="additional-btn" href="https://nel-by-ms.netlify.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">QuantumShield Firewall</div>
+        <div class="additional-desc">Digital security firewall with advanced threat detection, real-time monitoring, and simple integration to protect data and network operations.</div>
+        <a class="additional-btn" href="https://fire-wall.netlify.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">All RounderAPI (Surreal API Key Generator)</div>
+        <div class="additional-desc">Generates secure and unique API keys, simplifying developer integration and security for any app.</div>
+        <a class="additional-btn" href="https://allrounder-api.netlify.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">Traffic Management Wizard</div>
+        <div class="additional-desc">Smart urban traffic management utilizing signals, cameras, and analytics for optimizing flow, minimizing congestion, and improving safety.</div>
+        <a class="additional-btn" href="https://gregarious-buttercream-270467.netlify.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">Text Analyzer Pro</div>
+        <div class="additional-desc">Analyzes your writing for readability, grammar, and style—helping students, professionals, and writers improve text quality.</div>
+        <a class="additional-btn" href="https://analyzetex.netlify.app/" target="_blank" rel="noopener">Visit</a>
+      </div>
+      <div class="additional-card">
+        <div class="additional-title">CardioDetect</div>
+        <div class="additional-desc">AI-powered tool for early cancer detection through heartbeat analysis and advanced pattern recognition algorithms.</div>
+        <a class="additional-btn" href="" target="_blank" rel="noopener">Visit</a>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+      <h2 class="section-title">Team</h2>
+      <div class="team">
+        <div class="team-card">
+          <!-- Removing profile picture and replacing with icon -->
+          <div style="font-size: 3rem; color: var(--highlight); margin-bottom: 0.5rem; text-shadow: 0 0 15px rgba(138, 43, 226, 0.4);">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
+          <div class="team-name">Mayank Sharma</div>
+          <div class="team-role">Founder & AI Developer</div>
+        </div>
+        <!-- Add more team cards as needed -->
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <h2 class="section-title">Testimonials</h2>
+      <div class="testimonials">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"Mayank's AI tools are game changers for productivity!"</div>
+          <div class="testimonial-author">— Satisfied User</div>
+        </div>
+        <!-- Add more testimonial cards as needed -->
+      </div>
+    </section>
+
+    <!-- Contact & Social Section -->
+    <h2 class="section-title" id="contact">Contact & Social</h2>
+    <section class="contact-section">
+      <div class="contact-title">Let's Connect!</div>
+      <ul class="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:ms1591934@gmail.com">ms1591934@gmail.com</a>, <a href="mailto:b24bs1555@iitj.ac.in">b24bs1555@iitj.ac.in</a></li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/mayyanks" target="_blank">@mayyanks</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mayank-iitj" target="_blank">Mayank IITJ</a></li>
+        <li><strong>X (Twitter):</strong> <a href="https://twitter.com/mayyankks" target="_blank">@mayyankks</a></li>
+      </ul>
+    </section>
   </main>
-  <footer class="text-center text-muted" style="margin:2em 0 1em 0;font-size:0.98em;">
-    &copy; 2025 Mood News Magazine. Powered by trusted Indian news sources.<br>
-    <a href="mailto:ms1591934@gmail.com" class="ms-2" aria-label="Send feedback">Send Feedback</a>
-  </footer>
-  <!-- Add this just above the closing </footer> tag -->
-  <div id="credit" style="text-align:center; margin-top:1.5em;">
-    <span style="
-      display: inline-block;
-      font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-      font-weight: 700;
-      font-size: 1.25em;
-      letter-spacing: 0.03em;
-      color: #6c63ff;
-      background: linear-gradient(90deg,#ffe066 0%,#6c63ff 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInCredit 2s cubic-bezier(.4,2,.6,1);
-    ">
-      Built by Mayank Sharma
-    </span>
-  </div>
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-  @keyframes fadeInCredit {
-    0% { opacity: 0; transform: translateY(30px) scale(0.95);}
-    100% { opacity: 1; transform: translateY(0) scale(1);}
-  }
-  </style>
-  <div id="google_translate_element" style="position:fixed;bottom:10px;right:10px;z-index:9999;"></div>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script>
-    // Place this at the top of your <script> (before RSS_ENDPOINTS)
-    let currentSection = "top";
-    let userCity = "Delhi"; // Default, will update if geolocation works
-    let currentKeyword = "";
-
-    // Section RSS feeds
-    const SECTION_FEEDS = {
-      top: [
-        { url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", source: "Times of India" },
-        { url: "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml", source: "Hindustan Times" },
-        { url: "https://www.thehindu.com/news/national/feeder/default.rss", source: "The Hindu" },
-        { url: "https://indianexpress.com/section/india/feed/", source: "The Indian Express" },
-        { url: "https://feeds.feedburner.com/ndtvnews-india-news", source: "NDTV" },
-        { url: "https://www.news18.com/rss/india.xml", source: "News18" },
-        { url: "https://www.indiatoday.in/rss/homepage/topstory.xml", source: "India Today" },
-        { url: "https://www.firstpost.com/india/feed", source: "Firstpost" },
-        { url: "http://feeds.bbci.co.uk/news/world/asia/india/rss.xml", source: "BBC News (India)" },
-        { url: "https://www.bhaskar.com/rss-national/", source: "Dainik Bhaskar (Hindi)" },
-        { url: "https://www.jagran.com/rss/national.xml", source: "Dainik Jagran (Hindi)" },
-        { url: "http://newsonair.gov.in/RSS/Bulletins/English/Main.xml", source: "All India Radio (AIR) News" },
-        { url: "https://www.ptinews.com/rss/pti.xml", source: "Press Trust of India (PTI)" },
-        { url: "http://www.uniindia.com/rss/feed.aspx?feed=india", source: "United News of India (UNI)" },
-        { url: "https://aajtak.intoday.in/rssfeeds/topstories.xml", source: "Aaj Tak" },
-        { url: "https://www.timesnownews.com/rss/india/rssfeed.xml", source: "Times Now" },
-        { url: "https://www.republicworld.com/rss/india-news.xml", source: "Republic TV" },
-        { url: "https://ddnews.gov.in/rss-feed/1", source: "DD News" },
-        { url: "https://news.abplive.com/feed/india-news", source: "ABP News" },
-        { url: "https://www.livemint.com/rss/news/india", source: "LiveMint" },
-        { url: "https://www.news18.com/rss/india.xml", source: "CNN-News18" }
-      ],
-      tech: [
-        { url: "https://www.theverge.com/rss/index.xml", source: "The Verge" },
-        { url: "https://www.wired.com/feed/rss", source: "Wired" },
-        { url: "https://feeds.arstechnica.com/arstechnica/index", source: "Ars Technica" },
-        { url: "https://www.cnet.com/rss/news/", source: "CNET" },
-        { url: "https://www.techradar.com/rss", source: "TechRadar" },
-        { url: "https://www.engadget.com/rss.xml", source: "Engadget" },
-        { url: "https://www.zdnet.com/news/rss.xml", source: "ZDNet" }
-      ],
-      sports: [
-        { url: "http://feeds.bbci.co.uk/sport/rss.xml?edition=uk", source: "BBC Sport" },
-        { url: "https://www.espn.com/espn/rss/news", source: "ESPN" },
-        { url: "https://sports.yahoo.com/rss/", source: "Yahoo Sports" },
-        { url: "https://www.skysports.com/rss/12040", source: "Sky Sports" },
-        { url: "https://www.cbssports.com/rss/headlines/", source: "CBS Sports" }
-      ],
-      business: [
-        { url: "http://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business" },
-        { url: "https://www.cnbc.com/id/10001147/device/rss/rss.html", source: "CNBC" },
-        { url: "https://www.ft.com/?format=rss", source: "Financial Times" },
-        { url: "https://www.economist.com/business/rss.xml", source: "The Economist" },
-        { url: "https://www.bloomberg.com/feed/podcast/etf-report.xml", source: "Bloomberg" },
-        { url: "https://www.reuters.com/rssFeed/businessNews", source: "Reuters Business" }
-      ],
-      entertainment: [
-        { url: "https://www.hollywoodreporter.com/t/rss", source: "Hollywood Reporter" },
-        { url: "https://www.billboard.com/feed/", source: "Billboard" },
-        { url: "https://www.rollingstone.com/music/music-news/feed/", source: "Rolling Stone" },
-        { url: "https://www.eonline.com/syndication/feeds/rssfeeds/topstories.xml", source: "E! Online" },
-        { url: "https://www.vulture.com/rss/index.xml", source: "Vulture" }
-      ],
-      science: [
-        { url: "https://www.sciencemag.org/rss/news_current.xml", source: "Science Magazine" },
-        { url: "https://www.nature.com/subjects/science/rss", source: "Nature" },
-        { url: "https://www.scientificamerican.com/feed/rss/", source: "Scientific American" },
-        { url: "https://www.nationalgeographic.com/content/natgeo/en_us/news/_jcr_content/content/feed.rss", source: "National Geographic" }
-      ],
-      health: [
-        { url: "https://www.medicalnewstoday.com/rss", source: "Medical News Today" },
-        { url: "https://www.who.int/feeds/entity/mediacentre/news/en/rss.xml", source: "WHO" },
-        { url: "https://www.cdc.gov/media/rss.htm", source: "CDC" },
-        { url: "https://www.health.com/feed", source: "Health.com" }
-      ],
-      lifestyle: [
-        { url: "https://www.nytimes.com/services/xml/rss/nyt/FashionandStyle.xml", source: "NYT Fashion & Style" },
-        { url: "https://www.vogue.com/feed/rss", source: "Vogue" },
-        { url: "https://www.gq.com/feed/rss", source: "GQ" },
-        { url: "https://www.lonelyplanet.com/news/rss.xml", source: "Lonely Planet" }
-      ],
-      education: [
-        { url: "https://www.edutopia.org/rss.xml", source: "Edutopia" },
-        { url: "https://www.insidehighered.com/rss/news", source: "Inside Higher Ed" },
-        { url: "https://www.timeshighereducation.com/rss/news", source: "Times Higher Education" },
-        { url: "https://www.chronicle.com/section/News/6/rss", source: "The Chronicle of Higher Education" }
-      ],
-      national: [
-        { url: "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml", source: "Hindustan Times" },
-        { url: "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms", source: "TOI National" },
-        { url: "https://indianexpress.com/section/india/feed/", source: "The Indian Express" },
-        { url: "https://feeds.feedburner.com/ndtvnews-india-news", source: "NDTV" },
-        { url: "https://www.news18.com/rss/india.xml", source: "News18" }
-      ],
-      international: [
-        { url: "http://feeds.bbci.co.uk/news/world/rss.xml", source: "BBC World" },
-        { url: "https://rss.cnn.com/rss/edition_world.rss", source: "CNN World" },
-        { url: "https://www.aljazeera.com/xml/rss/all.xml", source: "Al Jazeera" },
-        { url: "https://www.reutersagency.com/feed/?best-topics=world&post_type=best", source: "Reuters World" },
-        { url: "https://www.npr.org/rss/rss.php?id=1004", source: "NPR World" },
-        { url: "https://www.nytimes.com/services/xml/rss/nyt/World.xml", source: "NY Times World" },
-        { url: "https://www.theguardian.com/world/rss", source: "The Guardian World" },
-        { url: "https://www.france24.com/en/rss", source: "France24" },
-        { url: "https://feeds.skynews.com/feeds/rss/world.xml", source: "Sky News World" },
-        { url: "https://www.dw.com/en/top-stories/world/s-1429?maca=en-rss-en-all-1573-rdf", source: "DW World" },
-        { url: "https://www.cbc.ca/cmlink/rss-world", source: "CBC World" }
-      ],
-      local: [] // Set dynamically as before
-    };
-
-    // --- Mood Selection ---
-    let currentMood = "happy";
-    document.querySelectorAll('.mood-btn').forEach(btn => {
-      btn.onclick = function() {
-        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        currentMood = btn.getAttribute('data-mood');
-        fetchAndRenderNews(true);
-      };
-    });
-    document.querySelector('.mood-btn[data-mood="happy"]').classList.add('selected');
-
-    // --- News Fetching & Mood Classification ---
-    let allNews = [];
-    let displayedNews = [];
-    let newsPage = 0;
-    const pageSize = 9;
-    let lastFetchTime = 0;
-
-    // RSS2JSON endpoints for TOI and HT
-    const RSS_ENDPOINTS = [
-      {
-        url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
-        source: "Times of India"
-      },
-      {
-        url: "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml",
-        source: "Hindustan Times"
-      }
-    ];
-
-    // --- Mood Classifier ---
-    function classifyMood(article) {
-      const text = (article.title + " " + (article.description || "")).toLowerCase();
-      if (/celebrate|win|growth|breakthrough|optimism|rejoice|happy|joy|success|progress/.test(text)) return "happy";
-      if (/flood|rain|disaster|loss|sad|mourning|grief|pain|tragedy/.test(text)) return "sad";
-      if (/anger|angry|protest|violence|tension|clash|attack|scandal/.test(text)) return "angry";
-      if (/surprise|unexpected|shock|discovery|wow|amazing|unbelievable/.test(text)) return "surprised";
-      return "neutral";
-    }
-
-    // --- Fetch News from RSS feeds via rss2json ---
-    async function fetchNews() {
-      let allArticles = [];
-      for (const feed of getCurrentFeeds()) {
-        try {
-          const resp = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`);
-          const data = await resp.json();
-          if (data.items) {
-            allArticles = allArticles.concat(
-              data.items.map(item => ({
-                title: item.title,
-                description: item.description.replace(/<[^>]+>/g, ''),
-                urlToImage: item.enclosure?.link || item.thumbnail || "https://via.placeholder.com/400x200?text=No+Image",
-                source: { name: feed.source },
-                publishedAt: item.pubDate,
-                url: item.link,
-                mood: classifyMood(item)
-              }))
-            );
-          }
-        } catch (e) { /* Ignore errors for demo */ }
-      }
-      // Sort by published date (latest first)
-      allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-      return allArticles;
-    }
-
-    // --- Render News Cards ---
-    function renderNews(reset = false) {
-      const grid = document.getElementById('newsGrid');
-      if (reset) {
-        displayedNews = [];
-        newsPage = 0;
-        grid.innerHTML = '';
-      }
-      // Show ALL news, not just filtered by mood
-      const nextPage = allNews.slice(newsPage * pageSize, (newsPage + 1) * pageSize);
-      displayedNews = displayedNews.concat(nextPage);
-
-      if (displayedNews.length === 0) {
-        grid.innerHTML = `
-          <div class="d-flex flex-column align-items-center justify-content-center" style="min-height:300px;">
-            <div style="font-size:2.5rem;opacity:0.5;">📰</div>
-            <div class="mt-3 text-muted" style="font-size:1.2rem;background:#f7f8fa;border-radius:1em;padding:1.5em 2em;box-shadow:0 4px 24px rgba(76,97,255,0.08);">
-              No Latest News yet, Check Later
-            </div>
-          </div>
-        `;
-        document.getElementById('scrollLoader').style.display = 'none';
-        return;
-      }
-
-      nextPage.forEach((article, idx) => {
-        // Use article image if available, else fallback
-        const imageUrl = article.urlToImage && article.urlToImage !== "null"
-          ? article.urlToImage
-          : "https://via.placeholder.com/400x200?text=No+Image";
-        grid.innerHTML += `
-          <div class="news-card scroll-anim" style="animation-delay:${idx * 0.07}s">
-            <img src="${imageUrl}" class="news-img" alt="News image for ${article.title}" loading="lazy">
-            <div class="news-content">
-              <div>
-                <span class="badge badge-mood badge-${article.mood}">${moodEmoji(article.mood)} ${capitalize(article.mood)}</span>
-                <span class="news-source">${article.source.name}</span>
-              </div>
-              <div class="news-title">${article.title}</div>
-              <div class="news-summary">${article.description || ""}</div>
-              <div class="news-meta">${formatTime(article.publishedAt)}</div>
-              <a href="${article.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary mt-2">Read Full Story</a>
-              <a href="#" class="btn btn-sm btn-outline-secondary mt-2 me-2" onclick="saveBookmark('${encodeURIComponent(article.url)}', '${encodeURIComponent(article.title)}');return false;">🔖 Save</a>
-              <div class="mt-2">
-                <a href="https://wa.me/?text=${encodeURIComponent(article.title + ' ' + article.url)}" target="_blank" class="btn btn-sm btn-success me-1" aria-label="Share on WhatsApp">WhatsApp</a>
-                <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(article.url)}" target="_blank" class="btn btn-sm btn-info me-1" aria-label="Share on Twitter">Twitter</a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(article.url)}" target="_blank" class="btn btn-sm btn-primary me-1" aria-label="Share on Facebook">Facebook</a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(article.url)}&title=${encodeURIComponent(article.title)}" target="_blank" class="btn btn-sm btn-secondary me-1" aria-label="Share on LinkedIn">LinkedIn</a>
-                <a href="mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(article.url)}" class="btn btn-sm btn-dark" aria-label="Share by Email">Email</a>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-      if ((newsPage + 1) * pageSize < allNews.length) {
-        document.getElementById('scrollLoader').style.display = '';
-      } else {
-        document.getElementById('scrollLoader').style.display = 'none';
-      }
-    }
-
-    function moodEmoji(mood) {
-      return {
-        happy: "😊",
-        sad: "😢",
-        angry: "😡",
-        surprised: "😲",
-        neutral: "😐"
-      }[mood] || "😐";
-    }
-    function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-    function formatTime(iso) {
-      if (!iso) return "";
-      const date = new Date(iso);
-      return date.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
-    }
-
-    // --- Infinite Scroll ---
-    window.onscroll = function() {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
-        // Remove mood filtering here!
-        if (displayedNews.length < allNews.length) {
-          newsPage++;
-          renderNews();
-        }
-      }
-    };
-
-    // --- Real-Time Polling ---
-    async function fetchAndRenderNews(reset = false) {
-      const news = await fetchNews();
-      // Deduplicate by title
-      const seen = new Set();
-      allNews = news.filter(a => {
-        if (seen.has(a.title)) return false;
-        seen.add(a.title);
-        return true;
-      });
-      renderNews(true);
-      lastFetchTime = Date.now();
-      document.getElementById('updateIndicator').style.display = '';
-      setTimeout(() => document.getElementById('updateIndicator').style.display = 'none', 2000);
-    }
-
-    // --- Real-Time Update Indicator ---
-    setInterval(async () => {
-      const news = await fetchNews();
-      const currentTitles = new Set(displayedNews.map(a => a.title));
-      const newStories = news.filter(a => !currentTitles.has(a.title));
-      if (newStories.length) {
-        document.getElementById('updateIndicator').style.display = '';
-      }
-    }, 15000);
-
-    function reloadNews() {
-      document.getElementById('updateIndicator').style.display = 'none';
-      fetchAndRenderNews(true);
-    }
-
-    // --- Stocks Stats Feature ---
-    async function fetchStocks(symbols = ["RELIANCE.NS", "TCS.NS", "INFY.NS"]) {
-      try {
-        const url = `https://financialmodelingprep.com/api/v3/quote/${symbols.join(",")}?apikey=demo`;
-        const resp = await fetch(url);
-        const data = await resp.json();
-        document.getElementById('stocksContent').innerHTML = data.map(stock => `
-          <div class="d-flex align-items-center mb-1">
-            <span style="width:90px;font-weight:600;">${stock.symbol}</span>
-            <span style="color:#23272f;">₹${stock.price}</span>
-            <span style="margin-left:1em;font-size:0.95em;${stock.change >= 0 ? 'color:#28a745' : 'color:#dc3545'};">
-              ${stock.change >= 0 ? '▲' : '▼'} ${stock.change.toFixed(2)}
-            </span>
-          </div>
-        `).join('');
-      } catch (e) {
-        document.getElementById('stocksContent').innerHTML = `<span class="text-danger">Stocks unavailable</span>`;
-      }
-    }
-    fetchStocks();
-
-    // --- Trending Topics Feature ---
-    async function fetchTrendingTopics() {
-      const news = await fetchNews();
-      const wordCounts = {};
-      news.forEach(a => {
-        a.title.split(/\s+/).forEach(word => {
-          word = word.toLowerCase().replace(/[^a-z]/g, '');
-          if (word.length > 3 && !['india','with','from','that','this','will','have','your','more','than','after','over','amid','into','about','their','they','said','says','news','for','the','and','but','are','has','was','you','who','not','out','all','new','his','her','she','him','our','its','had','get','now','day','one','two','three','four','five','six','seven','eight','nine','ten'].includes(word)) {
-            wordCounts[word] = (wordCounts[word] || 0) + 1;
-          }
-        });
-      });
-      const trending = Object.entries(wordCounts).sort((a,b)=>b[1]-a[1]).slice(0,7).map(([w])=>w);
-      document.getElementById('trendingContent').innerHTML = trending.map(t =>
-        `<span class="badge bg-primary me-1" style="cursor:pointer" onclick="searchTrending('${t}')">#${t}</span>`
-      ).join('');
-    }
-    function searchTrending(word) {
-      document.getElementById('searchInput').value = word;
-      currentKeyword = word;
-      fetchAndRenderNews(true);
-    }
-    fetchTrendingTopics();
-
-    // --- Initial Load ---
-    fetchAndRenderNews(true);
-
-    // Section tab switching
-    document.querySelectorAll('#newsSectionTabs .nav-link').forEach(btn => {
-      btn.onclick = function() {
-        document.querySelectorAll('#newsSectionTabs .nav-link').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentSection = btn.getAttribute('data-section');
-        fetchAndRenderNews(true);
-      };
-    });
-
-    // Try to get user's city for local news
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async pos => {
-        const lat = pos.coords.latitude, lon = pos.coords.longitude;
-        // Use OpenStreetMap Nominatim for reverse geocoding (no API key)
-        try {
-          const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
-          const data = await resp.json();
-          userCity = data.address.city || data.address.town || data.address.village || "Delhi";
-        } catch (e) { userCity = "Delhi"; }
-        // Set local news RSS (Google News by city)
-        SECTION_FEEDS.local = [
-          { url: `https://news.google.com/rss/search?q=${encodeURIComponent(userCity)}`, source: `Local (${userCity})` }
-        ];
-        // If user is on Local tab, reload news
-        if (currentSection === "local") fetchAndRenderNews(true);
-      });
-    } else {
-      SECTION_FEEDS.local = [
-        { url: `https://news.google.com/rss/search?q=Delhi`, source: "Local (Delhi)" }
-      ];
-    }
-
-    // Replace RSS_ENDPOINTS with dynamic getter:
-    function getCurrentFeeds() {
-      if (currentKeyword) {
-        return [{ url: `https://news.google.com/rss/search?q=${encodeURIComponent(currentKeyword)}`, source: `Search: ${currentKeyword}` }];
-      }
-      return SECTION_FEEDS[currentSection] || SECTION_FEEDS.top;
-    }
-
-    document.getElementById('searchForm').onsubmit = function(e) {
-      e.preventDefault();
-      currentKeyword = document.getElementById('searchInput').value.trim();
-      fetchAndRenderNews(true);
-    };
-
-    document.getElementById('sectionDropdown').onchange = function() {
-      currentSection = this.value;
-      fetchAndRenderNews(true);
-    };
-
-    function saveBookmark(url, title) {
-      let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || "[]");
-      if (!bookmarks.find(b => b.url === url)) {
-        bookmarks.push({ url, title });
-        localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-        alert("Bookmarked!");
-      }
-    }
-
-    // Show bookmarks modal
-    document.getElementById('viewBookmarksBtn').onclick = function() {
-      const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || "[]");
-      const list = bookmarks.length
-        ? `<ul class="list-group">
-            ${bookmarks.map(b => `
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="${decodeURIComponent(b.url)}" target="_blank">${decodeURIComponent(b.title)}</a>
-                <button class="btn btn-sm btn-danger" onclick="removeBookmark('${b.url}')">Remove</button>
-              </li>
-            `).join('')}
-          </ul>`
-        : "<div class='text-muted'>No bookmarks saved.</div>";
-      document.getElementById('bookmarksList').innerHTML = list;
-      // Show modal (Bootstrap 5)
-      let modal = new bootstrap.Modal(document.getElementById('bookmarksModal'));
-      modal.show();
-    };
-
-    // Remove bookmark
-    function removeBookmark(url) {
-      let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || "[]");
-      bookmarks = bookmarks.filter(b => b.url !== url);
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-      document.getElementById('viewBookmarksBtn').click(); // Refresh modal
-    }
-
-    // Dark mode toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.onclick = function() {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    };
-    if (localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark-mode');
-
-    function saveUserPrefs() {
-      localStorage.setItem('userPrefs', JSON.stringify({
-        mood: currentMood,
-        section: currentSection,
-        city: userCity
-      }));
-    }
-    function loadUserPrefs() {
-      const prefs = JSON.parse(localStorage.getItem('userPrefs') || '{}');
-      if (prefs.mood) currentMood = prefs.mood;
-      if (prefs.section) currentSection = prefs.section;
-      if (prefs.city) userCity = prefs.city;
-    }
-
-    // Ask for permission on first interaction
-    if (window.Notification && Notification.permission !== "granted") {
-      Notification.requestPermission();
-    }
-
-    // In your real-time polling, when new stories arrive:
-    setInterval(async () => {
-      const news = await fetchNews();
-      const currentTitles = new Set(displayedNews.map(a => a.title));
-      const newStories = news.filter(a => !currentTitles.has(a.title));
-      if (newStories.length) {
-        document.getElementById('updateIndicator').style.display = '';
-
-        // Show desktop notification
-        if (Notification.permission === "granted") {
-          new Notification("New stories available!", {
-            body: newStories[0].title,
-            icon: newStories[0].urlToImage || "https://via.placeholder.com/128"
-          });
-        }
-      }
-    }, 15000);
-
-    window.addEventListener('scroll', () => {
-  document.querySelector('.valenti-header').style.backgroundPositionY = `${window.scrollY * 0.3}px`;
-});
-  </script>
-
-  <!-- Bookmarks Modal -->
-  <div class="modal fade" id="bookmarksModal" tabindex="-1" aria-labelledby="bookmarksModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="bookmarksModalLabel">Saved Bookmarks</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="bookmarksList">
-          <!-- Bookmarks will be loaded here -->
-        </div>
-      </div>
+  <footer>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-  </div>
-<button id="fab-bookmarks" aria-label="View Bookmarks" data-bs-toggle="modal" data-bs-target="#bookmarksModal">🔖</button>
-<div class="alert alert-info mt-3" role="alert">
-  <b>Coming Soon:</b> User login, personalized feeds, and bookmark sync across devices!
-</div>
-<!-- Example: Animated bell for notifications -->
-<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animated-bell" aria-label="Notifications">
-  <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
-  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-</svg>
-<style>
-.animated-bell { animation: bellRing 1.5s infinite alternate; }
-@keyframes bellRing {
-  0% { transform: rotate(-8deg);}
-  100% { transform: rotate(8deg);}
-}
-.refresh-icon {
-  display: inline-block;
-  transition: transform 0.5s cubic-bezier(.4,2,.6,1);
-  font-size: 1.3em;
-  margin-right: 0.5em;
-}
-.refresh-anim-btn:active .refresh-icon,
-.refresh-anim-btn.refreshing .refresh-icon {
-  animation: spinRefresh 0.8s cubic-bezier(.4,2,.6,1) infinite;
-}
-@keyframes spinRefresh {
-  100% { transform: rotate(360deg);}
-}
-</style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="footer-social">
+      <a href="https://instagram.com/mayyanks" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com/in/mayank-iitj" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/mayyankks" target="_blank"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    <div class="footer-copy">&copy; 2025 Mayank Sharma. All rights reserved.</div>
+  </footer>
+  <script>
+    // Sticky header shadow on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Appear on scroll for cards/metrics/awards/team/testimonials
+    const appearEls = document.querySelectorAll('.card, .additional-card, .metric-card, .award-card, .team-card, .testimonial-card');
+    const appearObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.2 });
+    appearEls.forEach(el => appearObserver.observe(el));
+
+    // Animated counters for metrics
+    function animateCounter(el) {
+      const target = +el.dataset.count;
+      let current = 0;
+      const step = Math.ceil(target / 60);
+      function update() {
+        current += step;
+        if (current > target) current = target;
+        el.textContent = current;
+        if (current < target) requestAnimationFrame(update);
+      }
+      update();
+    }
+    document.querySelectorAll('.metric-number').forEach(el => {
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          animateCounter(el);
+          obs.disconnect();
+        }
+      }, { threshold: 0.7 });
+      obs.observe(el);
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Accessibility: reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.transition = 'none';
+        el.style.animation = 'none';
+      });
+    }
+  </script>
 </body>
 </html>
