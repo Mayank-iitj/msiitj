@@ -689,6 +689,983 @@
         animation: none !important;
       }
     }
+
+    /* Add these responsive enhancements to your existing CSS */
+    /* Mobile Navigation Improvements */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 101;
+      padding: 0.5rem;
+    }
+
+    /* Ensure images and videos are responsive */
+    img, video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Prevent horizontal scrolling issues */
+    body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .gallery, .additional-projects, .metrics, .awards, .team, .testimonials {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 5%;
+        justify-content: space-between;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 100;
+        border-left: 1px solid rgba(138, 43, 226, 0.3);
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav a {
+        padding: 1rem 0;
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: left;
+      }
+      
+      .hero {
+        min-height: 60vh;
+        padding: 3rem 1.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .button-container {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+      
+      .cta-btn {
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+        margin: 2rem 0 1rem 0;
+      }
+      
+      .contact-section {
+        padding: 1.5rem 1rem;
+      }
+      
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .card, .additional-card, .metric-card, .award-card, .team-card, .testimonial-card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .card-title, .additional-title {
+        font-size: 1.2rem;
+      }
+      
+      .card-desc, .additional-desc {
+        font-size: 0.95rem;
+      }
+      
+      .metric-number {
+        font-size: 2rem;
+      }
+      
+      .contact-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+
+    /* Improve touch targets for mobile */
+    @media (hover: none) {
+      nav a, .card-btn, .additional-btn, .cta-btn {
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .footer-social a {
+        padding: 0.5rem;
+      }
+    }
+
+    /* Reduce motion for performance on mobile */
+    @media (max-width: 768px) {
+      .shooting-star {
+        display: none;
+      }
+      
+      .star {
+        animation-duration: 6s !important;
+      }
+      
+      .hero::after {
+        animation: pulse 20s ease-in-out infinite;
+      }
+    }
+
+    /* ===== FADE ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    
+    .fade-in-delayed {
+      opacity: 0;
+      animation: fadeIn 1s forwards 0.3s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .fade-out {
+      opacity: 1;
+      animation: fadeOut 1s forwards;
+    }
+    
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    
+    /* ===== SLIDE ANIMATIONS ===== */
+    .slide-in-left {
+      transform: translateX(-50px);
+      opacity: 0;
+      animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .slide-in-right {
+      transform: translateX(50px);
+      opacity: 0;
+      animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .slide-in-up {
+      transform: translateY(50px);
+      opacity: 0;
+      animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    @keyframes slideInUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .slide-in-down {
+      transform: translateY(-50px);
+      opacity: 0;
+      animation: slideInDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* ===== PARALLAX SCROLLING ===== */
+    .parallax-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 130%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      will-change: transform;
+      z-index: -1;
+    }
+    
+    /* ===== HOVER EFFECTS ===== */
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+    
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+    
+    .hover-color-change {
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .hover-color-change:hover {
+      color: var(--highlight-alt);
+      background-color: rgba(138, 43, 226, 0.1);
+    }
+    
+    .hover-shadow {
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .hover-shadow:hover {
+      box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
+    }
+    
+    .hover-glow {
+      transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+    }
+    
+    .hover-glow:hover {
+      box-shadow: 0 0 15px rgba(255, 106, 194, 0.5);
+      text-shadow: 0 0 8px rgba(255, 106, 194, 0.5);
+    }
+    
+    /* ===== BUTTON ANIMATIONS ===== */
+    .pulse-btn {
+      position: relative;
+    }
+    
+    .pulse-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      box-shadow: 0 0 0 0 rgba(255, 106, 194, 0.7);
+      animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .pulse-btn:hover::after {
+      opacity: 1;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 106, 194, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 15px rgba(255, 106, 194, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 106, 194, 0);
+      }
+    }
+    
+    /* ===== TEXT ANIMATIONS ===== */
+    .typing-animation {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid var(--highlight);
+      width: 0;
+      animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+      display: inline-block;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--highlight) }
+    }
+    
+    .reveal-text {
+      position: relative;
+      color: transparent;
+      overflow: hidden;
+    }
+    
+    .reveal-text::before {
+      content: attr(data-text);
+      position: absolute;
+      color: var(--text);
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: revealText 2s linear forwards;
+    }
+    
+    @keyframes revealText {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    /* ===== SCROLL ANIMATIONS ===== */
+    .scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(17, 17, 52, 0.3);
+      z-index: 1000;
+    }
+    
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--highlight), var(--highlight-alt));
+      width: 0%;
+      transition: width 0.1s;
+    }
+    
+    /* ===== CARD FLIP ANIMATION ===== */
+    .flip-card {
+      perspective: 1000px;
+      background-color: transparent;
+      height: 300px;
+    }
+    
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    
+    .flip-card-front {
+      background: var(--card-bg);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+    
+    .flip-card-back {
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      transform: rotateY(180deg);
+      border: 1px solid rgba(138, 43, 226, 0.4);
+    }
+    
+    /* ===== 3D TILT EFFECT ===== */
+    .tilt-card {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      transition: transform 0.1s;
+    }
+    
+    .tilt-card-inner {
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+    
+    .tilt-card:hover .tilt-card-inner {
+      transform: translateZ(20px);
+    }
+    
+    .tilt-element {
+      transform: translateZ(20px);
+      transition: transform 0.3s ease;
+    }
+    
+    /* ===== BOUNCE ANIMATION ===== */
+    .bounce {
+      animation: bounce 1s ease infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-20px);}
+      60% {transform: translateY(-10px);}
+    }
+    
+    /* ===== HOVER UNDERLINE ===== */
+    .hover-underline {
+      position: relative;
+    }
+    
+    .hover-underline::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--highlight);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
+    
+    .hover-underline:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    /* ===== HOVER BORDER ANIMATION ===== */
+    .hover-border {
+      position: relative;
+      padding: 10px;
+    }
+    
+    .hover-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--highlight);
+      transition: width 0.3s ease;
+    }
+    
+    .hover-border:hover::before {
+      width: 100%;
+    }
+    
+    .hover-border::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--highlight);
+      transition: width 0.3s ease;
+    }
+    
+    .hover-border:hover::after {
+      width: 100%;
+    }
+    
+    /* ===== BACKGROUND GRADIENT ANIMATION ===== */
+    .gradient-bg {
+      background: linear-gradient(-45deg, var(--primary), var(--accent), var(--highlight), var(--highlight-alt));
+      background-size: 400% 400%;
+      animation: gradientBg 15s ease infinite;
+    }
+    
+    @keyframes gradientBg {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    /* ===== ZOOM BLUR ===== */
+    .zoom-blur {
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    
+    .zoom-blur:hover {
+      transform: scale(1.05);
+      filter: blur(1px);
+    }
+    
+    /* ===== BLUR FOCUS TRANSITION ===== */
+    .blur-focus {
+      filter: blur(3px);
+      transition: filter 0.5s ease;
+    }
+    
+    .blur-focus:hover {
+      filter: blur(0);
+    }
+    
+    /* ===== SVG PATH DRAWING ===== */
+    .svg-draw path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawSvg 2s linear forwards;
+    }
+    
+    @keyframes drawSvg {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    /* ===== LAYERED DEPTH PARALLAX ===== */
+    .parallax-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      transition: transform 0.1s;
+    }
+    
+    .parallax-layer-1 {
+      transform: translateZ(-100px) scale(1.5);
+    }
+    
+    .parallax-layer-2 {
+      transform: translateZ(-50px) scale(1.25);
+    }
+    
+    .parallax-layer-3 {
+      transform: translateZ(0);
+    }
+    
+    /* ===== EXPAND/COLLAPSE SECTIONS ===== */
+    .expandable {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    
+    .expanded {
+      max-height: 2000px;
+    }
+    
+    /* ===== CONFETTI PARTICLES ===== */
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--highlight);
+      animation: confetti-fall 3s linear infinite;
+    }
+    
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    
+    /* ===== SHADOW DROP ANIMATION ===== */
+    .shadow-drop {
+      animation: shadowDrop 1s forwards;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    
+    @keyframes shadowDrop {
+      to {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+    }
+    
+    /* ===== SCROLL SNAP ===== */
+    .scroll-snap-container {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+    
+    .scroll-snap-section {
+      scroll-snap-align: start;
+      height: 100vh;
+    }
+    
+    /* ===== HOVER TEXT SHADOW ===== */
+    .hover-text-shadow {
+      transition: text-shadow 0.3s ease;
+    }
+    
+    .hover-text-shadow:hover {
+      text-shadow: 0 0 8px var(--highlight-glow);
+    }
+    
+    /* ===== HOVER OPACITY ===== */
+    .hover-opacity {
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .hover-opacity:hover {
+      opacity: 1;
+    }
+    
+    /* ===== ANIMATED SVG ICONS ===== */
+    .animated-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .animated-icon:hover {
+      transform: rotate(20deg);
+    }
+    
+    /* ===== SKELETON LOADING ===== */
+    .skeleton {
+      background: linear-gradient(90deg, var(--card-bg) 0%, rgba(255, 255, 255, 0.1) 50%, var(--card-bg) 100%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: 4px;
+      min-height: 20px;
+      margin-bottom: 8px;
+    }
+    
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0 }
+      100% { background-position: -200% 0 }
+    }
+    
+    /* ===== GLITCH EFFECT ===== */
+    .glitch {
+      position: relative;
+      animation: glitch-skew 1s infinite linear alternate-reverse;
+    }
+    
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--highlight);
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+    
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 var(--highlight-alt);
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim2 5s infinite linear alternate-reverse;
+    }
+    
+    @keyframes glitch-anim {
+      0% { clip: rect(24px, 9999px, 52px, 0); transform: skew(0.4deg); }
+      5% { clip: rect(57px, 9999px, 30px, 0); transform: skew(0.95deg); }
+      10% { clip: rect(29px, 9999px, 58px, 0); transform: skew(0.94deg); }
+      15% { clip: rect(86px, 9999px, 73px, 0); transform: skew(0.42deg); }
+      20% { clip: rect(15px, 9999px, 8px, 0); transform: skew(0.67deg); }
+      25% { clip: rect(38px, 9999px, 1px, 0); transform: skew(0.52deg); }
+      30% { clip: rect(59px, 9999px, 71px, 0); transform: skew(0.45deg); }
+      35% { clip: rect(88px, 9999px, 16px, 0); transform: skew(0.7deg); }
+      40% { clip: rect(94px, 9999px, 58px, 0); transform: skew(0.94deg); }
+      45% { clip: rect(57px, 9999px, 71px, 0); transform: skew(0.29deg); }
+      50% { clip: rect(99px, 9999px, 51px, 0); transform: skew(0.27deg); }
+      55% { clip: rect(76px, 9999px, 8px, 0); transform: skew(0.11deg); }
+      60% { clip: rect(14px, 9999px, 34px, 0); transform: skew(0.78deg); }
+      65% { clip: rect(34px, 9999px, 56px, 0); transform: skew(0.37deg); }
+      70% { clip: rect(96px, 9999px, 91px, 0); transform: skew(0.9deg); }
+      75% { clip: rect(61px, 9999px, 89px, 0); transform: skew(0.1deg); }
+      80% { clip: rect(80px, 9999px, 3px, 0); transform: skew(0.14deg); }
+      85% { clip: rect(52px, 9999px, 45px, 0); transform: skew(0.11deg); }
+      90% { clip: rect(4px, 9999px, 36px, 0); transform: skew(0.27deg); }
+      95% { clip: rect(17px, 9999px, 61px, 0); transform: skew(0.58deg); }
+      100% { clip: rect(89px, 9999px, 61px, 0); transform: skew(0.85deg); }
+    }
+    
+    @keyframes glitch-anim2 {
+      0% { clip: rect(46px, 9999px, 26px, 0); transform: skew(0.52deg); }
+      5% { clip: rect(53px, 9999px, 9px, 0); transform: skew(0.71deg); }
+      10% { clip: rect(70px, 9999px, 42px, 0); transform: skew(0.65deg); }
+      15% { clip: rect(6px, 9999px, 98px, 0); transform: skew(0.12deg); }
+      20% { clip: rect(46px, 9999px, 19px, 0); transform: skew(0.2deg); }
+      25% { clip: rect(82px, 9999px, 3px, 0); transform: skew(0.69deg); }
+      30% { clip: rect(27px, 9999px, 82px, 0); transform: skew(0.07deg); }
+      35% { clip: rect(74px, 9999px, 21px, 0); transform: skew(0.03deg); }
+      40% { clip: rect(56px, 9999px, 80px, 0); transform: skew(0.35deg); }
+      45% { clip: rect(32px, 9999px, 86px, 0); transform: skew(0.68deg); }
+      50% { clip: rect(55px, 9999px, 12px, 0); transform: skew(0.06deg); }
+      55% { clip: rect(29px, 9999px, 65px, 0); transform: skew(0.39deg); }
+      60% { clip: rect(93px, 9999px, 100px, 0); transform: skew(0.37deg); }
+      65% { clip: rect(26px, 9999px, 37px, 0); transform: skew(0.85deg); }
+      70% { clip: rect(74px, 9999px, 99px, 0); transform: skew(0.09deg); }
+      75% { clip: rect(99px, 9999px, 69px, 0); transform: skew(0.88deg); }
+      80% { clip: rect(32px, 9999px, 1px, 0); transform: skew(0.9deg); }
+      85% { clip: rect(18px, 9999px, 23px, 0); transform: skew(0.27deg); }
+      90% { clip: rect(18px, 9999px, 79px, 0); transform: skew(0.68deg); }
+      95% { clip: rect(71px, 9999px, 88px, 0); transform: skew(0.19deg); }
+      100% { clip: rect(98px, 9999px, 40px, 0); transform: skew(0.55deg); }
+    }
+    
+    @keyframes glitch-skew {
+      0% { transform: skew(-2deg); }
+      10% { transform: skew(0deg); }
+      20% { transform: skew(1deg); }
+      30% { transform: skew(0deg); }
+      40% { transform: skew(-1deg); }
+      50% { transform: skew(-1deg); }
+      60% { transform: skew(0deg); }
+      70% { transform: skew(1deg); }
+      80% { transform: skew(-2deg); }
+      90% { transform: skew(0deg); }
+      100% { transform: skew(1deg); }
+    }
+
+    /* ===== WAVE ANIMATION ===== */
+    .wave-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 100px;
+    }
+    
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%238A2BE2' fill-opacity='0.3' d='M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,117.3C672,117,768,171,864,181.3C960,192,1056,160,1152,144C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      background-position: 0 bottom;
+      background-size: 50% 100px;
+      animation: wave 15s linear infinite;
+    }
+    
+    .wave:nth-child(2) {
+      bottom: 0;
+      animation: wave 20s linear reverse infinite;
+      opacity: 0.7;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23FF6AC2' fill-opacity='0.3' d='M0,64L48,96C96,128,192,192,288,202.7C384,213,480,171,576,138.7C672,107,768,85,864,101.3C960,117,1056,171,1152,192C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    }
+    
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Add a media query to disable heavy animations on mobile for performance */
+    @media (max-width: 768px) {
+      .parallax-bg, .tilt-card, .glitch::before, .glitch::after {
+        animation: none !important;
+        transform: none !important;
+      }
+      
+      .confetti-container, .wave-container {
+        display: none;
+      }
+    }
+
+    /* CSS for new sections */
+
+/* Education Timeline */
+.education-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--highlight), var(--highlight-alt));
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--highlight-glow);
+}
+
+.education-item {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.education-item:nth-child(odd) {
+  padding-right: 50%;
+  text-align: right;
+}
+
+.education-item:nth-child(even) {
+  padding-left: 50%;
+  text-align: left;
+}
+
+.education-year {
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--highlight), var(--highlight-alt));
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 0 15px var(--highlight-glow);
+  z-index: 1;
+}
+
+.education-item:nth-child(odd) .education-year {
+  right: calc(50% - 60px);
+}
+
+.education-item:nth-child(even) .education-year {
+  left: calc(50% - 60px);
+}
+
+.education-content {
+  background: var(--card-bg);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.15);
+  backdrop-filter: blur(5px);
+  max-width: 400px;
+}
+
+.education-item:nth-child(odd) .education-content {
+  margin-right: 80px;
+}
+
+.education-item:nth-child(even) .education-content {
+  margin-left: 80px;
+}
+
+.education-content h3 {
+  margin-top: 0;
+  color: var(--highlight);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.education-content p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+/* Force left side for .education-left */
+.education-item.education-left {
+  padding-right: 50%;
+  padding-left: 0;
+  text-align: right;
+}
+.education-item.education-left .education-year {
+  right: calc(50% - 60px);
+  left: auto;
+}
+.education-item.education-left .education-content {
+  margin-right: 80px;
+  margin-left: 0;
+}
   </style>
 </head>
 <body>
@@ -716,32 +1693,48 @@
   <div class="shooting-star"></div>
   
   <header id="main-header">
-    <nav>
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav id="main-nav">
       <a href="#hero">Home</a>
       <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#experience">Work</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#metrics">Metrics</a>
-      <a href="#awards">Awards</a>
-      <a href="#team">Team</a>
-      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar"></div>
+  </div>
   <main>
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <h1>Mayank Sharma</h1>
-      <p>
+    <section class="hero parallax-container" id="hero">
+      <div class="parallax-bg" data-speed="0.2" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 800 800\'%3E%3Cg fill=\'none\' stroke=\'%23250B54\' stroke-width=\'1\'%3E%3Cpath d=\'M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+      
+      <h1 class="glitch" data-text="Mayank Sharma">Mayank Sharma</h1>
+      <p class="slide-in-up">
         <strong>Student at IIT JODHPUR, Pursuing BS in AIDE.</strong><br>
         I am quite fascinated by the number of AI tools in the market and their application.<br>
         <span style="color: #FF6AC2; font-weight:600; text-shadow: 0 0 8px rgba(255, 106, 194, 0.4);">Find some of them here.</span>
       </p>
-      <button class="cta-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
+      <div class="button-container fade-in-delayed">
+        <button class="cta-btn pulse-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Explore Projects</button>
+        <a class="cta-btn" href="https://m4mayank.my.canva.site/mayank" target="_blank" rel="noopener" style="background: var(--highlight-alt);">Visit</a>
+      </div>
+      
+      <div class="wave-container" style="height: 100px; position: absolute; bottom: 0; width: 100%; left: 0;">
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="section-title reveal-text" data-text="About Me">About Me</h2>
       <div class="card"> <!-- Use .card for appear/hover effect -->
         <p>
           I am passionate about AI, data science, and building tools that make a difference. My journey at IIT Jodhpur has exposed me to cutting-edge research and real-world projects. I love collaborating and sharing knowledge!
@@ -749,13 +1742,256 @@
       </div>
     </section>
 
+    <!-- Resume Section -->
+    <section id="resume">
+      <h2 class="section-title reveal-text" data-text="Resume">Resume</h2>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <h3 class="card-title">MOTIVE</h3>
+          <p class="card-desc">
+            As an AI Engineer/Data Scientist, my journey has been filled with exciting challenges and innovative projects. I successfully developed machine learning models that analyze large datasets, yielding actionable insights to drive business decisions. My experience includes collaborating with cross-functional teams to implement AI solutions that enhance operational efficiency and improve user experiences. I am passionate about leveraging data to solve complex problems and continuously seek opportunities to advance skills in this dynamic field.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2 class="section-title reveal-text" data-text="Work Experience">Work Experience</h2>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <h3 class="card-title">INTERN AT WIPRO</h3>
+          <p class="card-desc">
+            My internship at Wipro was a transformative experience that bridged the gap between academic learning and real-world application. I am grateful for the mentorship, the challenging projects, and the supportive culture that helped me grow both professionally and personally.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title reveal-text" data-text="Education">Education</h2>
+        <div class="education-timeline">
+          <div class="education-item fade-in">
+            <div class="education-year">2023-24</div>
+            <div class="education-content">
+              <h3>12th from CBSE</h3>
+              <p>SCORED 97.5% in PCM</p>
+            </div>
+          </div>
+          <div class="education-item fade-in education-left">
+            <div class="education-year">2021-22</div>
+            <div class="education-content">
+              <h3>10th from CBSE</h3>
+              <p>SCORED 95.8%</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2 class="section-title reveal-text" data-text="Skills & Expertise">Skills & Expertise</h2>
+      <div class="skills-flip-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              English Proficiency (Written)
+            </div>
+            <div class="flip-card-back">
+              Strong written English, creating clear and engaging content.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              MS Excel & Advanced Excel
+            </div>
+            <div class="flip-card-back">
+              Expert in data analysis, pivot tables, and automation.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Creative Writing
+            </div>
+            <div class="flip-card-back">
+              Crafting compelling narratives that engage readers.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Copywriting
+            </div>
+            <div class="flip-card-back">
+              Writing persuasive copy that aligns with brand voice.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Data Cleaning
+            </div>
+            <div class="flip-card-back">
+              Identifying and correcting inaccuracies in datasets.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Data Entry
+            </div>
+            <div class="flip-card-back">
+              Accurate and efficient data input with attention to detail.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Data Visualization
+            </div>
+            <div class="flip-card-back">
+              Transforming data into clear visual formats for insights.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Data Science
+            </div>
+            <div class="flip-card-back">
+              Applying statistical methods to extract insights from data.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Data Engineering
+            </div>
+            <div class="flip-card-back">
+              Building data pipelines for processing and analytics.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Report Writing
+            </div>
+            <div class="flip-card-back">
+              Producing reports with actionable findings.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Cursor (GenAI) & ChatGPT
+            </div>
+            <div class="flip-card-back">
+              Utilizing AI tools to enhance writing and analytics.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Analytical Thinking
+            </div>
+            <div class="flip-card-back">
+              Analyzing information to identify patterns and make decisions.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Windsurf (GenAI)
+            </div>
+            <div class="flip-card-back">
+              Using GenAI to enhance windsurfing experiences.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Wix
+            </div>
+            <div class="flip-card-back">
+              Creating and managing websites on Wix for user-friendly design.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              VS Code
+            </div>
+            <div class="flip-card-back">
+              Using Visual Studio Code for efficient coding tasks.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Power BI
+            </div>
+            <div class="flip-card-back">
+              Employing Power BI for visualization and business insights.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              Netlify
+            </div>
+            <div class="flip-card-back">
+              Deploy web applications seamlessly with Netlify.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              GitHub Copilot (GenAI)
+            </div>
+            <div class="flip-card-back">
+              Leveraging GitHub Copilot for coding assistance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Metrics Section -->
     <section id="metrics">
       <h2 class="section-title">Metrics</h2>
       <div class="metrics">
-        <div class="metric-card">
-          <div class="metric-number" data-count="16">0</div>
-          <div class="metric-label">Major Projects</div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="metric-number" data-count="16">0</div>
+              <div class="metric-label">Major Projects</div>
+            </div>
+            <div class="flip-card-back">
+              <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">16</div>
+              <div>Innovative Projects Completed</div>
+              <div style="font-size: 0.9rem; margin-top: 0.5rem;">Each project showcases unique AI applications</div>
+            </div>
+          </div>
         </div>
         <div class="metric-card">
           <div class="metric-number" data-count="8">0</div>
@@ -777,96 +2013,121 @@
       <h2 class="section-title">Awards</h2>
       <div class="awards">
         <div class="award-card">
-          <div class="award-icon"><i class="fas fa-trophy"></i></div>
-          <div class="award-title">Hackathon Winner</div>
-          <div class="award-desc">Won IITJ AI Hackathon 2024</div>
-        </div>
-        <div class="award-card">
           <div class="award-icon"><i class="fas fa-medal"></i></div>
           <div class="award-title">Dean's List</div>
           <div class="award-desc">Academic Excellence 2023</div>
         </div>
-        <!-- Add more awards as needed -->
+        <!-- You can add more awards here if needed -->
       </div>
     </section>
 
     <!-- Projects Section with updated links -->
     <h2 class="section-title" id="projects">Project Gallery</h2>
     <section class="gallery">
-      <div class="card">
-        <div class="card-title">Face Mask Detection with Deep Learning</div>
-        <div class="card-desc">Detects face masks in images/streams using MobileNetV2, classifies mask status with high accuracy.</div>
-        <a class="card-btn" href="https://msfacify.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">Face Mask Detection with Deep Learning</div>
+          <div class="card-desc">Detects face masks in images/streams using MobileNetV2, classifies mask status with high accuracy.</div>
+          <a class="card-btn hover-shadow" href="https://msfacify.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">Customer Churn Prediction</div>
-        <div class="card-desc">ML pipeline for telecom churn prediction using Random Forest and XGBoost, features actionable insights.</div>
-        <a class="card-btn" href="https://xlhyimcjxn0d.manus.space/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">Customer Churn Prediction</div>
+          <div class="card-desc">ML pipeline for telecom churn prediction using Random Forest and XGBoost, features actionable insights.</div>
+          <a class="card-btn hover-shadow" href="https://xlhyimcjxn0d.manus.space/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">Music Genre Classification</div>
-        <div class="card-desc">Audio model using CNNs/LSTMs to identify genres; web app for user testing.</div>
-        <a class="card-btn" href="https://genre-classifyer.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">Music Genre Classification</div>
+          <div class="card-desc">Audio model using CNNs/LSTMs to identify genres; web app for user testing.</div>
+          <a class="card-btn hover-shadow" href="https://genre-classifyer.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">E-Commerce Product Recommendation System</div>
-        <div class="card-desc">Hybrid engine (collaborative + content-based) boosting engagement by 20%.</div>
-        <a class="card-btn" href="https://app--clay-shop-1f50815c.base44.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">E-Commerce Product Recommendation System</div>
+          <div class="card-desc">Hybrid engine (collaborative + content-based) boosting engagement by 20%.</div>
+          <a class="card-btn hover-shadow" href="https://app--clay-shop-1f50815c.base44.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">Sentiment Analysis on Social Media</div>
-        <div class="card-desc">Uses BERT to classify tweet sentiments, offers real-time trend visualization.</div>
-        <a class="card-btn" href="https://ss-analysis-ms.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">Sentiment Analysis on Social Media</div>
+          <div class="card-desc">Uses BERT to classify tweet sentiments, offers real-time trend visualization.</div>
+          <a class="card-btn hover-shadow" href="https://ss-analysis-ms.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">Spam Mail Analyzer</div>
-        <div class="card-desc">Detects & filters unwanted/harmful emails, enhances inbox security.</div>
-        <a class="card-btn" href="https://app--cosmic-guard-30c712d6.base44.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">Spam Mail Analyzer</div>
+          <div class="card-desc">Detects & filters unwanted/harmful emails, enhances inbox security.</div>
+          <a class="card-btn hover-shadow" href="https://app--cosmic-guard-30c712d6.base44.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">SmartCity IoT (PC only)</div>
-        <div class="card-desc">Integrates IoT into urban systems for real-time city data and smarter management.</div>
-        <a class="card-btn" href="https://splendid-pika-249aa2.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">SmartCity IoT (PC only)</div>
+          <div class="card-desc">Integrates IoT into urban systems for real-time city data and smarter management.</div>
+          <a class="card-btn hover-shadow" href="https://splendid-pika-249aa2.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">Life Goal Unleashed (Life Pattern Analyzer)</div>
-        <div class="card-desc">Analyzes user routines for personal growth and productivity.</div>
-        <a class="card-btn" href="https://lifexly.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">Life Goal Unleashed (Life Pattern Analyzer)</div>
+          <div class="card-desc">Analyzes user routines for personal growth and productivity.</div>
+          <a class="card-btn hover-shadow" href="https://lifexly.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">SocialStarX</div>
-        <div class="card-desc">Automated tool for post scheduling, engagement analysis, account management.</div>
-        <a class="card-btn" href="https://dynamic-flan-4984b0.netlify.app/#l" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">SocialStarX</div>
+          <div class="card-desc">Automated tool for post scheduling, engagement analysis, account management.</div>
+          <a class="card-btn hover-shadow" href="https://dynamic-flan-4984b0.netlify.app/#l" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">ReactNative</div>
-        <div class="card-desc">Showcases apps built with React Native for cross-platform development.</div>
-        <a class="card-btn" href="https://reactnativeproject.lovable.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">ReactNative</div>
+          <div class="card-desc">Showcases apps built with React Native for cross-platform development.</div>
+          <a class="card-btn hover-shadow" href="https://reactnativeproject.lovable.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">X Analytics</div>
-        <div class="card-desc">Market analysis tool offering deep market and consumer insights.</div>
-        <a class="card-btn" href="https://market-analytics.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">X Analytics</div>
+          <div class="card-desc">Market analysis tool offering deep market and consumer insights.</div>
+          <a class="card-btn hover-shadow" href="https://market-analytics.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">CredWise</div>
-        <div class="card-desc">Credit card approval predictor for personalized recommendations.</div>
-        <a class="card-btn" href="https://cardx.lovable.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">CredWise</div>
+          <div class="card-desc">Credit card approval predictor for personalized recommendations.</div>
+          <a class="card-btn hover-shadow" href="https://cardx.lovable.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">FintechAnalytics</div>
-        <div class="card-desc">EDA tool transforming raw financial data into insights with visual/statistical techniques.</div>
-        <a class="card-btn" href="https://fintechanalytics.vercel.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">FintechAnalytics</div>
+          <div class="card-desc">EDA tool transforming raw financial data into insights with visual/statistical techniques.</div>
+          <a class="card-btn hover-shadow" href="https://fintechanalytics.vercel.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">SalesAnalytics</div>
-        <div class="card-desc">Analyzes sales trends and processes for data-driven business growth.</div>
-        <a class="card-btn" href="https://stately-starship-297297.netlify.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">SalesAnalytics</div>
+          <div class="card-desc">Analyzes sales trends and processes for data-driven business growth.</div>
+          <a class="card-btn hover-shadow" href="https://stately-starship-297297.netlify.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-title">msGPT</div>
-        <div class="card-desc">Advanced AI assistant for content, Q&A, and productivity tasks.</div>
-        <a class="card-btn" href="https://gptbymayank.lovable.app/" target="_blank" rel="noopener">Explore</a>
+      <div class="card tilt-card">
+        <div class="tilt-card-inner">
+          <div class="card-title">msGPT</div>
+          <div class="card-desc">Advanced AI assistant for content, Q&A, and productivity tasks.</div>
+          <a class="card-btn hover-shadow" href="https://gptbymayank.lovable.app/" target="_blank" rel="noopener">Explore</a>
+        </div>
       </div>
     </section>
 
@@ -924,15 +2185,13 @@
     <section id="team">
       <h2 class="section-title">Team</h2>
       <div class="team">
-        <div class="team-card">
-          <!-- Removing profile picture and replacing with icon -->
+        <div class="team-card hover-shadow">
           <div style="font-size: 3rem; color: var(--highlight); margin-bottom: 0.5rem; text-shadow: 0 0 15px rgba(138, 43, 226, 0.4);">
-            <i class="fas fa-user-astronaut"></i>
+            <i class="fas fa-user-astronaut animated-icon"></i>
           </div>
           <div class="team-name">Mayank Sharma</div>
-          <div class="team-role">Founder & AI Developer</div>
+          <div class="team-role typing-animation">Founder & AI Developer</div>
         </div>
-        <!-- Add more team cards as needed -->
       </div>
     </section>
 
@@ -950,13 +2209,13 @@
 
     <!-- Contact & Social Section -->
     <h2 class="section-title" id="contact">Contact & Social</h2>
-    <section class="contact-section">
+    <section class="contact-section gradient-bg">
       <div class="contact-title">Let's Connect!</div>
       <ul class="contact-list">
-        <li><strong>Email:</strong> <a href="mailto:ms1591934@gmail.com">ms1591934@gmail.com</a>, <a href="mailto:b24bs1555@iitj.ac.in">b24bs1555@iitj.ac.in</a></li>
-        <li><strong>Instagram:</strong> <a href="https://instagram.com/mayyanks" target="_blank">@mayyanks</a></li>
-        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mayank-iitj" target="_blank">Mayank IITJ</a></li>
-        <li><strong>X (Twitter):</strong> <a href="https://twitter.com/mayyankks" target="_blank">@mayyankks</a></li>
+        <li><strong>Email:</strong> <a href="mailto:ms1591934@gmail.com" class="hover-underline">ms1591934@gmail.com</a>, <a href="mailto:b24bs1555@iitj.ac.in" class="hover-underline">b24bs1555@iitj.ac.in</a></li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/mayyanks" target="_blank" class="hover-underline">@mayyanks</a></li>
+        <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mayank-iitj" target="_blank" class="hover-underline">Mayank IITJ</a></li>
+        <li><strong>X (Twitter):</strong> <a href="https://twitter.com/mayyankks" target="_blank" class="hover-underline">@mayyankks</a></li>
       </ul>
     </section>
   </main>
@@ -967,9 +2226,9 @@
       <a href="#contact">Contact</a>
     </div>
     <div class="footer-social">
-      <a href="https://instagram.com/mayyanks" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://linkedin.com/in/mayank-iitj" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://twitter.com/mayyankks" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://instagram.com/mayyanks" target="_blank" class="hover-scale"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com/in/mayank-iitj" target="_blank" class="hover-scale"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/mayyankks" target="_blank" class="hover-scale"><i class="fab fa-x-twitter"></i></a>
     </div>
     <div class="footer-copy">&copy; 2025 Mayank Sharma. All rights reserved.</div>
   </footer>
@@ -997,7 +2256,17 @@
         current += step;
         if (current > target) current = target;
         el.textContent = current;
-        if (current < target) requestAnimationFrame(update);
+        if (current < target) {
+          requestAnimationFrame(update);
+        } else {
+          // Check if all counters have finished
+          const allFinished = Array.from(document.querySelectorAll('.metric-number')).every(el => 
+            parseInt(el.textContent) === parseInt(el.dataset.count)
+          );
+          if (allFinished) {
+            createConfetti();
+          }
+        }
       }
       update();
     }
@@ -1021,6 +2290,45 @@
         }
       });
     });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuToggle.innerHTML = mainNav.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close menu when clicking a nav link
+      document.querySelectorAll('#main-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('active');
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('active')) {
+          mainNav.classList.remove('active');
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+    }
+
+    // Ensure proper viewport height on mobile browsers
+    function setViewportHeight() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Set the viewport height variable
+    setViewportHeight();
+    window.addEventListener('resize', setViewportHeight);
 
     // Accessibility: reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
